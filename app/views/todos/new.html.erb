@@ -3,10 +3,7 @@
 <% form_for(@todo) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :text %><br />
-    <%= f.text_field :text %>
-  </p>
+  <%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%= f.submit 'Create' %>
   </p>
