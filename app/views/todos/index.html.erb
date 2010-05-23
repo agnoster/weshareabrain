@@ -22,7 +22,7 @@
 
 </table>
 
-<p><%=h @todos.count { |todo| not todo.done } %> todos still undone!</p>
+<p><%=h @todos.select { |todo| not todo.done }.size %> todos still undone!</p>
 
 <br />
 
