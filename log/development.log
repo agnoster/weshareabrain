@@ -50,3 +50,231 @@ Migrating to CreateTodos (20100523071938)
   [4;35;1mSQL (42.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
   [4;36;1mSQL (23.5ms)[0m   [0;1mdescribe `todos`[0m
   [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `todos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (4.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-23 09:28:20) [GET]
+
+ActionController::RoutingError (No route matches "/todo/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-23 09:28:26) [GET]
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 70ms (View: 66, DB: 1) | 200 OK [http://localhost/todos/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#new (for 127.0.0.1 at 2010-05-23 09:28:30) [GET]
+  [4;35;1mTodo Columns (30.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Rendering template within layouts/todos
+Rendering todos/new
+
+ActionView::TemplateError (undefined method `status' for #<Todo:0x101db6760>) on line #8 of app/views/todos/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :status %><br />
+8:     <%= f.text_field :status %>
+9:   </p>
+10:   <p>
+11:     <%= f.label :text %><br />
+
+    app/views/todos/new.html.erb:8
+    app/views/todos/new.html.erb:3
+    app/controllers/todos_controller.rb:29:in `new'
+
+Rendered rescues/_trace (121.5ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#new (for 127.0.0.1 at 2010-05-23 09:30:09) [GET]
+  [4;36;1mTodo Columns (23.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Rendering template within layouts/todos
+Rendering todos/new
+Completed in 37ms (View: 8, DB: 24) | 200 OK [http://localhost/todos/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#new (for 127.0.0.1 at 2010-05-23 09:30:18) [GET]
+  [4;35;1mTodo Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Rendering template within layouts/todos
+Rendering todos/new
+Completed in 9ms (View: 4, DB: 2) | 200 OK [http://localhost/todos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#new (for 127.0.0.1 at 2010-05-23 09:30:26) [GET]
+  [4;36;1mTodo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Rendering template within layouts/todos
+Rendering todos/new
+
+ActionView::TemplateError (undefined method `checkbox' for #<ActionView::Helpers::FormBuilder:0x101649400>) on line #8 of app/views/todos/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :done %><br />
+8:     <%= f.checkbox :done %>
+9:   </p>
+10:   <p>
+11:     <%= f.label :text %><br />
+
+    app/views/todos/new.html.erb:8
+    app/views/todos/new.html.erb:3
+    app/controllers/todos_controller.rb:29:in `new'
+
+Rendered rescues/_trace (71.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#new (for 127.0.0.1 at 2010-05-23 09:30:32) [GET]
+  [4;35;1mTodo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Rendering template within layouts/todos
+Rendering todos/new
+Completed in 11ms (View: 7, DB: 1) | 200 OK [http://localhost/todos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#create (for 127.0.0.1 at 2010-05-23 09:30:37) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk=", "todo"=>{"text"=>"Testing"}}
+  [4;36;1mTodo Columns (40.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mSQL (32.9ms)[0m   [0mBEGIN[0m
+  [4;36;1mTodo Create (19.0ms)[0m   [0;1mINSERT INTO `todos` (`created_at`, `updated_at`, `done`, `text`) VALUES('2010-05-23 07:30:37', '2010-05-23 07:30:37', NULL, 'Testing')[0m
+  [4;35;1mSQL (17.2ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/todos/1
+Completed in 120ms (DB: 109) | 302 Found [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 127.0.0.1 at 2010-05-23 09:30:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (65.1ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+
+ActionView::TemplateError (undefined method `status' for #<Todo:0x10158e4c0>) on line #3 of app/views/todos/show.html.erb:
+1: <p>
+2:   <b>Status:</b>
+3:   <%=h @todo.status %>
+4: </p>
+5: 
+6: <p>
+
+    app/views/todos/show.html.erb:3
+    app/controllers/todos_controller.rb:18:in `show'
+
+Rendered rescues/_trace (59.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 127.0.0.1 at 2010-05-23 09:31:03) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.6ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 18ms (View: 11, DB: 2) | 200 OK [http://localhost/todos/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-23 09:31:07) [GET]
+  [4;36;1mTodo Load (0.8ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+
+ActionView::TemplateError (undefined method `status' for #<Todo:0x1016c23c8>) on line #11 of app/views/todos/index.html.erb:
+8: 
+9: <% @todos.each do |todo| %>
+10:   <tr>
+11:     <td><%=h todo.status %></td>
+12:     <td><%=h todo.text %></td>
+13:     <td><%= link_to 'Show', todo %></td>
+14:     <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+
+    app/views/todos/index.html.erb:11
+    app/views/todos/index.html.erb:9:in `each'
+    app/views/todos/index.html.erb:9
+    app/controllers/todos_controller.rb:7:in `index'
+
+Rendered rescues/_trace (56.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-23 09:31:22) [GET]
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 16ms (View: 10, DB: 3) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#edit (for 127.0.0.1 at 2010-05-23 09:31:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.8ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+Rendering template within layouts/todos
+Rendering todos/edit
+
+ActionView::TemplateError (undefined method `checkbox' for #<ActionView::Helpers::FormBuilder:0x10170bd48>) on line #8 of app/views/todos/edit.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :done %><br />
+8:     <%= f.checkbox :done %>
+9:   </p>
+10:   <p>
+11:     <%= f.label :text %><br />
+
+    app/views/todos/edit.html.erb:8
+    app/views/todos/edit.html.erb:3
+
+Rendered rescues/_trace (114.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#edit (for 127.0.0.1 at 2010-05-23 09:31:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodo Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (1.7ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+Rendering template within layouts/todos
+Rendering todos/edit
+Completed in 17ms (View: 10, DB: 3) | 200 OK [http://localhost/todos/1/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-23 09:31:59) [GET]
+  [4;36;1mTodo Load (0.9ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 15ms (View: 9, DB: 4) | 200 OK [http://localhost/todos/]

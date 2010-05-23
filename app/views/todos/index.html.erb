@@ -8,7 +8,7 @@
 
 <% @todos.each do |todo| %>
   <tr>
-    <td><%=h todo.status %></td>
+    <td><%=h todo.done %></td>
     <td><%=h todo.text %></td>
     <td><%= link_to 'Show', todo %></td>
     <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
