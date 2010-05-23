@@ -2,20 +2,23 @@
 
 <table>
   <tr>
-    <th>Status</th>
+    <th>Done</th>
     <th>Text</th>
   </tr>
 
 <% @todos.each do |todo| %>
   <tr>
-    <td><%=h todo.done %></td>
+    <td><%= "&#10003;" if todo.done %></td>
     <td><%=h todo.text %></td>
     <td><%= link_to 'Show', todo %></td>
     <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
     <td><%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+
 </table>
+
+<p><%=h @todos.count { |todo| not todo.done } %> todos still undone!</p>
 
 <br />
 

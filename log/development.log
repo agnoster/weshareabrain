@@ -278,3 +278,408 @@ Rendering template within layouts/todos
 Rendering todos/index
   [4;35;1mTodo Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
 Completed in 15ms (View: 9, DB: 4) | 200 OK [http://localhost/todos/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:35:14) [GET]
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (13.2ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 26ms (View: 8, DB: 14) | 200 OK [http://gilgamesh.local/todos/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.3 at 2010-05-23 09:35:40) [GET]
+  [4;36;1mTodo Load (1.1ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 11ms (View: 5, DB: 2) | 200 OK [http://gilgamesh.local/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:36:38) [GET]
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (2874.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 2890ms (View: 11, DB: 2875) | 200 OK [http://gilgamesh.local/todos/]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:37:02) [GET]
+  [4;36;1mTodo Load (0.9ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 19ms (View: 12, DB: 4) | 200 OK [http://gilgamesh.local/todos/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#edit (for 10.0.1.4 at 2010-05-23 09:37:04) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodo Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+Rendering template within layouts/todos
+Rendering todos/edit
+Completed in 12ms (View: 5, DB: 3) | 200 OK [http://gilgamesh.local/todos/1/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#update (for 10.0.1.4 at 2010-05-23 09:37:06) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"o0CN2D9L4HTJ83a1YWp29qRrPwxztNk8wN0YXBlbeI8=", "id"=>"1", "todo"=>{"text"=>"Testing", "done"=>"1"}}
+  [4;36;1mTodo Columns (20.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (2.7ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTodo Update (39.2ms)[0m   [0mUPDATE `todos` SET `updated_at` = '2010-05-23 07:37:06', `done` = 1 WHERE `id` = 1[0m
+  [4;36;1mSQL (106.8ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://gilgamesh.local:3000/todos/1
+Completed in 180ms (DB: 169) | 302 Found [http://gilgamesh.local/todos/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 10.0.1.4 at 2010-05-23 09:37:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTodo Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (1.0ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 39ms (View: 2, DB: 3) | 200 OK [http://gilgamesh.local/todos/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:37:08) [GET]
+  [4;35;1mTodo Load (10.0ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (22.9ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 44ms (View: 7, DB: 33) | 200 OK [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:37:34) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 14ms (View: 9, DB: 2) | 200 OK [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:37:40) [GET]
+  [4;35;1mTodo Load (3.3ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (8.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 26ms (View: 10, DB: 12) | 200 OK [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.3 at 2010-05-23 09:37:47) [GET]
+  [4;35;1mTodo Load (0.4ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.3 at 2010-05-23 09:37:51) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 10ms (View: 6, DB: 2) | 200 OK [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#new (for 10.0.1.4 at 2010-05-23 09:37:56) [GET]
+  [4;35;1mTodo Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Rendering template within layouts/todos
+Rendering todos/new
+Completed in 11ms (View: 4, DB: 3) | 200 OK [http://gilgamesh.local/todos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#create (for 10.0.1.4 at 2010-05-23 09:38:01) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"o0CN2D9L4HTJ83a1YWp29qRrPwxztNk8wN0YXBlbeI8=", "todo"=>{"text"=>"Kiss Joan again"}}
+  [4;36;1mTodo Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mTodo Create (1.5ms)[0m   [0;1mINSERT INTO `todos` (`created_at`, `updated_at`, `done`, `text`) VALUES('2010-05-23 07:38:01', '2010-05-23 07:38:01', NULL, 'Kiss Joan again')[0m
+  [4;35;1mSQL (59.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://gilgamesh.local:3000/todos/2
+Completed in 73ms (DB: 66) | 302 Found [http://gilgamesh.local/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 10.0.1.4 at 2010-05-23 09:38:01) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mTodo Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.2ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 2) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 9ms (View: 2, DB: 3) | 200 OK [http://gilgamesh.local/todos/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:38:03) [GET]
+  [4;36;1mTodo Load (0.7ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (15.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 27ms (View: 8, DB: 16) | 200 OK [http://gilgamesh.local/todos]
+  [4;36;1mSQL (10.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#new (for 10.0.1.4 at 2010-05-23 09:38:04) [GET]
+  [4;36;1mTodo Columns (3.8ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Rendering template within layouts/todos
+Rendering todos/new
+Completed in 17ms (View: 6, DB: 14) | 200 OK [http://gilgamesh.local/todos/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#create (for 10.0.1.4 at 2010-05-23 09:38:14) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"o0CN2D9L4HTJ83a1YWp29qRrPwxztNk8wN0YXBlbeI8=", "todo"=>{"text"=>"Go to the Standesamt tuesday"}}
+  [4;35;1mTodo Columns (14.7ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTodo Create (0.2ms)[0m   [0mINSERT INTO `todos` (`created_at`, `updated_at`, `done`, `text`) VALUES('2010-05-23 07:38:14', '2010-05-23 07:38:14', NULL, 'Go to the Standesamt tuesday')[0m
+  [4;36;1mSQL (15.9ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://gilgamesh.local:3000/todos/3
+Completed in 43ms (DB: 32) | 302 Found [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 10.0.1.4 at 2010-05-23 09:38:14) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mTodo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.2ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 8ms (View: 2, DB: 2) | 200 OK [http://gilgamesh.local/todos/3]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:38:15) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (3.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 41ms (View: 31, DB: 4) | 200 OK [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.3 at 2010-05-23 09:38:18) [GET]
+  [4;35;1mTodo Load (0.6ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 15ms (View: 10, DB: 2) | 200 OK [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#edit (for 10.0.1.4 at 2010-05-23 09:39:15) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTodo Columns (4.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (7.4ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 2) [0m
+Rendering template within layouts/todos
+Rendering todos/edit
+Completed in 21ms (View: 5, DB: 12) | 200 OK [http://gilgamesh.local/todos/2/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#update (for 10.0.1.4 at 2010-05-23 09:39:18) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"o0CN2D9L4HTJ83a1YWp29qRrPwxztNk8wN0YXBlbeI8=", "id"=>"2", "todo"=>{"text"=>"Kiss Joan again", "done"=>"1"}}
+  [4;35;1mTodo Columns (2.9ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (1.5ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 2) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mTodo Update (1.4ms)[0m   [0;1mUPDATE `todos` SET `updated_at` = '2010-05-23 07:39:18', `done` = 1 WHERE `id` = 2[0m
+  [4;35;1mSQL (14.3ms)[0m   [0mCOMMIT[0m
+Redirected to http://gilgamesh.local:3000/todos/2
+Completed in 31ms (DB: 21) | 302 Found [http://gilgamesh.local/todos/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 10.0.1.4 at 2010-05-23 09:39:18) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mTodo Columns (5.7ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (1.1ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 2) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 14ms (View: 3, DB: 7) | 200 OK [http://gilgamesh.local/todos/2]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.4 at 2010-05-23 09:39:20) [GET]
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (7.2ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 30ms (View: 18, DB: 8) | 200 OK [http://gilgamesh.local/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.3 at 2010-05-23 09:39:29) [GET]
+  [4;36;1mTodo Load (2.8ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;35;1mTodo Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+Completed in 20ms (View: 11, DB: 5) | 200 OK [http://gilgamesh.local/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#edit (for 10.0.1.3 at 2010-05-23 09:39:36) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mTodo Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.2ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+Rendering template within layouts/todos
+Rendering todos/edit
+Completed in 15ms (View: 7, DB: 3) | 200 OK [http://gilgamesh.local/todos/3/edit]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#update (for 10.0.1.3 at 2010-05-23 09:39:43) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"RVqJJ0OkZoSjJ7urgy/So/ADJluoxvSykUVtLosX2Rw=", "id"=>"3", "todo"=>{"text"=>"Go to the Standesamt Tuesday", "done"=>"0"}}
+  [4;36;1mTodo Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.9ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTodo Update (0.2ms)[0m   [0mUPDATE `todos` SET `updated_at` = '2010-05-23 07:39:43', `done` = 0, `text` = 'Go to the Standesamt Tuesday' WHERE `id` = 3[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://gilgamesh.local:3000/todos/3
+Completed in 10ms (DB: 4) | 302 Found [http://gilgamesh.local/todos/3]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 10.0.1.3 at 2010-05-23 09:39:43) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mTodo Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.7ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 10ms (View: 2, DB: 4) | 200 OK [http://gilgamesh.local/todos/3]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.0.1.3 at 2010-05-23 09:39:45) [GET]
+  [4;35;1mTodo Load (0.4ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 16ms (View: 10, DB: 2) | 200 OK [http://gilgamesh.local/todos]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mTodo Load (0.5ms)[0m   [0;1mSELECT * FROM `todos` [0m
+  [4;35;1mTodo Columns (10.2ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.211.55.2 at 2010-05-23 09:42:55) [GET]
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (34.4ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 53ms (View: 15, DB: 36) | 200 OK [http://gilgamesh.local/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 10.211.55.2 at 2010-05-23 09:43:32) [GET]
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+  [4;36;1mTodo Columns (27.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+Completed in 61ms (View: 30, DB: 28) | 200 OK [http://gilgamesh.local/todos]
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTodos (20100523071938)
+Migrating to CreateTags (20100523074512)
+  [4;36;1mSQL (220.4ms)[0m   [0;1mCREATE TABLE `tags` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100523074512')[0m
+Migrating to CreateTaggings (20100523074627)
+  [4;36;1mSQL (284.7ms)[0m   [0;1mCREATE TABLE `taggings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tag_id` int(11), `todo_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100523074627')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (31.9ms)[0m   [0mSHOW FIELDS FROM `taggings`[0m
+  [4;36;1mSQL (16.9ms)[0m   [0;1mdescribe `taggings`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `taggings`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `tags`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `tags`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mdescribe `todos`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `todos`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mTag Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTag Create (0.4ms)[0m   [0;1mINSERT INTO `tags` (`name`, `created_at`, `updated_at`) VALUES('wedding', '2010-05-23 07:55:05', '2010-05-23 07:55:05')[0m
+  [4;35;1mSQL (57.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (3.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (6.2ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;35;1mTodo Load (1.5ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 0) [0m
+  [4;36;1mTodo Load (7.9ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mTodo Columns (47.8ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Columns (4.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.9ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;36;1mTagging Load (0.3ms)[0m   [0;1mSELECT * FROM `taggings` WHERE (`taggings`.todo_id = 3) [0m
+  [4;35;1mSQL (14.9ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTagging Columns (3.3ms)[0m   [0;1mSHOW FIELDS FROM `taggings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mTodo Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (3.3ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;35;1mTag Load (156.3ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.todo_id = 3)) [0m
+  [4;36;1mSQL (14.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTag Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `tags`[0m
+  [4;36;1mTag Load (8.1ms)[0m   [0;1mSELECT * FROM `tags` WHERE (`tags`.`id` = 1) [0m
+  [4;35;1mSQL (5.9ms)[0m   [0mBEGIN[0m
+  [4;36;1mTagging Columns (10.2ms)[0m   [0;1mSHOW FIELDS FROM `taggings`[0m
+  [4;35;1mTagging Create (35.1ms)[0m   [0mINSERT INTO `taggings` (`todo_id`, `created_at`, `tag_id`, `updated_at`) VALUES(3, '2010-05-23 07:59:29', 1, '2010-05-23 07:59:29')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mTodo Columns (3.7ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;35;1mTag Load (1.4ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.todo_id = 3)) [0m
+  [4;36;1mTag Columns (18.1ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
