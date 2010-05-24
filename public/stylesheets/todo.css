@@ -1,0 +1,18 @@
+.todo {
+	
+}
+
+.todo .tick {
+	text-decoration: none;
+}
+
+.todo .info {
+	margin-left: 2em;
+}
+
+.todo.done {
+	color: gray;
+}
+.todo.done .text {
+	text-decoration: line-through;
+}

@@ -8,24 +8,27 @@
 </p>
 <% end %>
 
-<table>
-  <tr>
-    <th>Done</th>
-    <th>Text</th>
-    <th>Due</th>
-    <th>Points</th>
-  </tr>
-
 <% @todos.each do |todo| %>
-  <tr>
-    <td><%= "&#10003;" if todo.done %></td>
-    <td><%=h todo.text %></td>
-    <td><%=h todo.due %></td>
-    <td><%=h todo.points %></td>
-    <td><%= link_to 'Show', todo %></td>
-    <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-    <td><%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="todo <%= todo.done ? 'done' : 'open' %>">
+<%= if todo.done
+	link_to '&#x2714;', { :controller => :todos, :action => :uncheck , :id => todo.id}, :class => 'tick'
+else
+	link_to '&#x2610;', { :controller => :todos, :action => :check , :id => todo.id}, :class => 'tick'
+end
+%>
+<span class="text">
+<%=h todo.text %>
+</span>
+<div class="info">
+<span class="due-date">Due: <%=h todo.due or 'no due date' %></span>
+<span class="points">Points: <%=h todo.points %></span>
+<span class="links">
+<%= link_to '<img src="/icons/16/information.png" />', todo %>
+<%= link_to '<img src="/icons/16/pencil.png" />', edit_todo_path(todo), :class => 'edit' %>
+<%= link_to '<img src="/icons/16/cross.png" />', todo, :confirm => 'Are you sure?', :method => :delete %>
+</div>
+</div>
+</span>
 <% end %>
 
 </table>

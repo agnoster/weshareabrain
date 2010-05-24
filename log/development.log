@@ -727,3 +727,1266 @@ Migrating to DropTagsAndTaggings (20100524071430)
   [4;36;1mSQL (44.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
   [4;35;1mSQL (1.6ms)[0m   [0mdescribe `todos`[0m
   [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW KEYS FROM `todos`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTodos (20100523071938)
+Migrating to CreateTags (20100523074512)
+Migrating to CreateTaggings (20100523074627)
+Migrating to AddDueToTodos (20100523082737)
+Migrating to AddPointsToTodos (20100523083021)
+Migrating to DropTagsAndTaggings (20100524071430)
+Migrating to ActsAsTaggableOnMigration (20100524072110)
+  [4;36;1mSQL (129.5ms)[0m   [0;1mCREATE TABLE `tags` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (230.6ms)[0m   [0mCREATE TABLE `taggings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tag_id` int(11), `taggable_id` int(11), `tagger_id` int(11), `tagger_type` varchar(255), `taggable_type` varchar(255), `context` varchar(255), `created_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (150.9ms)[0m   [0;1mCREATE INDEX `index_taggings_on_tag_id` ON `taggings` (`tag_id`)[0m
+  [4;35;1mSQL (336.4ms)[0m   [0mCREATE INDEX `index_taggings_on_taggable_id_and_taggable_type_and_context` ON `taggings` (`taggable_id`, `taggable_type`, `context`)[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100524072110')[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (5.6ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (70.6ms)[0m   [0;1mSHOW FIELDS FROM `taggings`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mdescribe `taggings`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW KEYS FROM `taggings`[0m
+  [4;35;1mSQL (9.1ms)[0m   [0mSHOW FIELDS FROM `tags`[0m
+  [4;36;1mSQL (6.7ms)[0m   [0;1mdescribe `tags`[0m
+  [4;35;1mSQL (4.1ms)[0m   [0mSHOW KEYS FROM `tags`[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mSQL (23.5ms)[0m   [0mdescribe `todos`[0m
+  [4;36;1mSQL (8.4ms)[0m   [0;1mSHOW KEYS FROM `todos`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:30:15) [GET]
+  [4;36;1mSQL (18.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (3.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (1.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 514ms (View: 474, DB: 23) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (4.5ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;35;1mActsAsTaggableOn::Tagging Columns (19.7ms)[0m   [0mSHOW FIELDS FROM `taggings`[0m
+  [4;36;1mActsAsTaggableOn::Tag Load (51.3ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo') AND ((taggings.tagger_id IS NULL AND taggings.context = 'tags'))) [0m
+  [4;35;1mSQL (15.5ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsTaggableOn::Tag Load (43.9ms)[0m   [0;1mSELECT * FROM `tags` WHERE (name LIKE 'wedding' OR name LIKE 'important') [0m
+  [4;35;1mActsAsTaggableOn::Tag Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `tags`[0m
+  [4;36;1mActsAsTaggableOn::Tag Load (63.1ms)[0m   [0;1mSELECT `tags`.id FROM `tags` WHERE (`tags`.`name` = BINARY 'wedding') LIMIT 1[0m
+  [4;35;1mActsAsTaggableOn::Tag Create (5.3ms)[0m   [0mINSERT INTO `tags` (`name`) VALUES('wedding')[0m
+  [4;36;1mActsAsTaggableOn::Tag Load (18.5ms)[0m   [0;1mSELECT `tags`.id FROM `tags` WHERE (`tags`.`name` = BINARY 'important') LIMIT 1[0m
+  [4;35;1mActsAsTaggableOn::Tag Create (0.2ms)[0m   [0mINSERT INTO `tags` (`name`) VALUES('important')[0m
+  [4;36;1mActsAsTaggableOn::Tag Load (15.3ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE (((taggings.context = 'tags' AND taggings.tagger_id IS NULL) AND ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo'))) AND ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo'))) [0m
+  [4;35;1mActsAsTaggableOn::Tagging Load (16.6ms)[0m   [0mSELECT * FROM `taggings` WHERE (((`taggings`.`tagger_id` IS NULL AND `taggings`.`tag_id` IN (NULL) AND `taggings`.`context` = 'tags' AND `taggings`.`tagger_type` IS NULL) AND (`taggings`.taggable_id = 3 AND `taggings`.taggable_type = 'Todo')) AND (`taggings`.taggable_id = 3 AND `taggings`.taggable_type = 'Todo')) [0m
+  [4;36;1mActsAsTaggableOn::Tagging Load (0.4ms)[0m   [0;1mSELECT `taggings`.id FROM `taggings` WHERE (`taggings`.`tag_id` = 1 AND `taggings`.taggable_type = 'Todo' AND `taggings`.taggable_id = 3 AND `taggings`.context = 'tags' AND `taggings`.tagger_id IS NULL AND `taggings`.tagger_type IS NULL) LIMIT 1[0m
+  [4;35;1mActsAsTaggableOn::Tagging Create (0.2ms)[0m   [0mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2010-05-24 07:32:08', 1, 3, 'tags', NULL, 'Todo')[0m
+  [4;36;1mActsAsTaggableOn::Tagging Load (3.3ms)[0m   [0;1mSELECT `taggings`.id FROM `taggings` WHERE (`taggings`.`tag_id` = 2 AND `taggings`.taggable_type = 'Todo' AND `taggings`.taggable_id = 3 AND `taggings`.context = 'tags' AND `taggings`.tagger_id IS NULL AND `taggings`.tagger_type IS NULL) LIMIT 1[0m
+  [4;35;1mActsAsTaggableOn::Tagging Create (2.4ms)[0m   [0mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2010-05-24 07:32:08', 2, 3, 'tags', NULL, 'Todo')[0m
+  [4;36;1mSQL (88.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mTodo Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mSQL (23.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (2.2ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;35;1mActsAsTaggableOn::Tag Load (2.4ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE (((taggings.context = 'tags' AND taggings.tagger_id IS NULL) AND ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo'))) AND ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo'))) [0m
+  [4;36;1mActsAsTaggableOn::Tag Load (17.1ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo') AND ((taggings.tagger_id IS NULL AND taggings.context = 'tags'))) [0m
+  [4;35;1mActsAsTaggableOn::Tag Load (1.8ms)[0m   [0mSELECT * FROM `tags` WHERE (name LIKE 'wedding') [0m
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT `todos`.* FROM `todos` JOIN taggings todos_taggings_wedding_990 ON todos_taggings_wedding_990.taggable_id = todos.id AND todos_taggings_wedding_990.taggable_type = 'Todo' AND todos_taggings_wedding_990.tag_id = 1 [0m
+  [4;35;1mSQL (3.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:37:11) [GET]
+  [4;35;1mSQL (20.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (47.5ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (2.8ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 780ms (View: 342, DB: 74) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#edit (for 127.0.0.1 at 2010-05-24 09:37:14) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (3.5ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+Rendering template within layouts/todos
+Rendering todos/edit
+  [4;35;1mActsAsTaggableOn::Tagging Columns (17.7ms)[0m   [0mSHOW FIELDS FROM `taggings`[0m
+  [4;36;1mActsAsTaggableOn::Tag Load (0.5ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE (((taggings.context = 'tags' AND taggings.tagger_id IS NULL) AND ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo'))) AND ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo'))) [0m
+  [4;35;1mActsAsTaggableOn::Tag Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `tags`[0m
+Rendered todos/_form (226.5ms)
+Completed in 435ms (View: 371, DB: 26) | 200 OK [http://localhost/todos/3/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#update (for 127.0.0.1 at 2010-05-24 09:37:22) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk=", "id"=>"3", "todo"=>{"due(1i)"=>"2010", "due(2i)"=>"5", "due(3i)"=>"25", "due(4i)"=>"09", "text"=>"Go to the Standesamt Tuesday", "done"=>"0", "points"=>"100", "due(5i)"=>"30", "tag_list"=>"wedding, important, foobar"}}
+  [4;36;1mSQL (2.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (33.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (17.6ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsTaggableOn::Tag Load (2.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (name LIKE 'wedding' OR name LIKE 'important' OR name LIKE 'foobar') [0m
+  [4;35;1mActsAsTaggableOn::Tag Load (0.4ms)[0m   [0mSELECT `tags`.id FROM `tags` WHERE (`tags`.`name` = BINARY 'foobar') LIMIT 1[0m
+  [4;36;1mActsAsTaggableOn::Tag Create (0.2ms)[0m   [0;1mINSERT INTO `tags` (`name`) VALUES('foobar')[0m
+  [4;35;1mActsAsTaggableOn::Tag Load (0.6ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE (((taggings.context = 'tags' AND taggings.tagger_id IS NULL) AND ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo'))) AND ((`taggings`.taggable_id = 3) AND (`taggings`.taggable_type = 'Todo'))) [0m
+  [4;36;1mActsAsTaggableOn::Tagging Load (0.3ms)[0m   [0;1mSELECT * FROM `taggings` WHERE (((`taggings`.`tag_id` IN (NULL) AND `taggings`.`tagger_type` IS NULL AND `taggings`.`context` = 'tags' AND `taggings`.`tagger_id` IS NULL) AND (`taggings`.taggable_id = 3 AND `taggings`.taggable_type = 'Todo')) AND (`taggings`.taggable_id = 3 AND `taggings`.taggable_type = 'Todo')) [0m
+  [4;35;1mActsAsTaggableOn::Tagging Load (0.8ms)[0m   [0mSELECT `taggings`.id FROM `taggings` WHERE (`taggings`.`tag_id` = 3 AND `taggings`.taggable_type = 'Todo' AND `taggings`.taggable_id = 3 AND `taggings`.context = 'tags' AND `taggings`.tagger_id IS NULL AND `taggings`.tagger_type IS NULL) LIMIT 1[0m
+  [4;36;1mActsAsTaggableOn::Tagging Create (0.2ms)[0m   [0;1mINSERT INTO `taggings` (`tagger_id`, `created_at`, `tag_id`, `taggable_id`, `context`, `tagger_type`, `taggable_type`) VALUES(NULL, '2010-05-24 07:37:24', 3, 3, 'tags', NULL, 'Todo')[0m
+  [4;35;1mSQL (12.2ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/todos/3
+Completed in 1597ms (DB: 71) | 302 Found [http://localhost/todos/3]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 127.0.0.1 at 2010-05-24 09:37:24) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 3) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 46ms (View: 28, DB: 4) | 200 OK [http://localhost/todos/3]
+  [4;35;1mActsAsTaggableOn::Tag Load (2.1ms)[0m   [0mSELECT * FROM `tags` WHERE (name LIKE 'foobar') [0m
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT `todos`.* FROM `todos` JOIN taggings todos_taggings_foobar_828 ON todos_taggings_foobar_828.taggable_id = todos.id AND todos_taggings_foobar_828.taggable_type = 'Todo' AND todos_taggings_foobar_828.tag_id = 3 [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:37:39) [GET]
+  [4;35;1mSQL (2.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 84ms (View: 62, DB: 5) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:41:51) [GET]
+  [4;36;1mSQL (2.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (42.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (2.2ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 133ms (View: 72, DB: 47) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:42:04) [GET]
+  [4;35;1mSQL (4.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (4.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (3.7ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 328ms (View: 267, DB: 12) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:45:22) [GET]
+  [4;36;1mSQL (10.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (39.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 125ms (View: 60, DB: 50) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 09:45:23) [GET]
+
+ActionController::RoutingError (No route matches "/icons/16/information.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 09:45:24) [GET]
+
+ActionController::RoutingError (No route matches "/icons/16/information.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:45:30) [GET]
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.5ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 91ms (View: 75, DB: 5) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 09:45:30) [GET]
+
+ActionController::RoutingError (No route matches "/icon/16/information.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 09:45:31) [GET]
+
+ActionController::RoutingError (No route matches "/icon/16/information.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 09:45:53) [GET]
+
+ActionController::RoutingError (No route matches "/icons/16/information.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:46:47) [GET]
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (27.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (2.4ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 69ms (View: 23, DB: 32) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 09:46:47) [GET]
+
+ActionController::RoutingError (No route matches "/icon/16/information.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 09:46:47) [GET]
+
+ActionController::RoutingError (No route matches "/icon/16/information.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:47:07) [GET]
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.3ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+ERROR: compiling _run_erb_app47views47todos47index46html46erb RAISED compile error
+/Users/yitzhak/code/weshareabrain/app/views/todos/index.html.erb:18: syntax error, unexpected ':', expecting ')'
+...'Edit', edit_todo_path(todo) :class => 'edit' ).to_s); @outp...
+                              ^
+Function body:           def _run_erb_app47views47todos47index46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<h1>Joan and Yitz's shared todos</h1>\n\n"
+
+;  form_for @todo do |f| ; @output_buffer.concat "\n"
+; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n<p>\n\t"
+
+; @output_buffer.concat(( f.text_field :text ).to_s); @output_buffer.concat "\n\t"
+; @output_buffer.concat(( f.submit "Add" ).to_s); @output_buffer.concat "\n</p>\n"
+
+;  end ; @output_buffer.concat "\n\n"
+
+;  @todos.each do |todo| ; @output_buffer.concat "\n<div class=\"todo "
+; @output_buffer.concat(( todo.done ? 'done' : 'open' ).to_s); @output_buffer.concat "\">\n<h3 class=\"text\">"
+; @output_buffer.concat((h todo.text ).to_s); @output_buffer.concat "</h3>\n<span class=\"due-date\">"
+; @output_buffer.concat((h todo.due ).to_s); @output_buffer.concat "</span>\n<span class=\"points\">"
+; @output_buffer.concat((h todo.points ).to_s); @output_buffer.concat "</span>\n<span class=\"links\">\n"
+
+; @output_buffer.concat(( link_to '<img src="/icons/16/information.png" />', todo ).to_s); @output_buffer.concat "\n"
+; @output_buffer.concat(( link_to 'Edit', edit_todo_path(todo) :class => 'edit' ).to_s); @output_buffer.concat "\n"
+; @output_buffer.concat(( link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete ).to_s); @output_buffer.concat "\n</div>\n</span>\n"
+
+
+;  end ; @output_buffer.concat "\n\n</table>\n\n<p>"
+
+
+
+; @output_buffer.concat((h @todos.select { |todo| not todo.done }.size ).to_s); @output_buffer.concat " todos still undone!</p>\n\n<br />\n\n"
+
+
+
+; @output_buffer.concat(( link_to 'New todo', new_todo_path ).to_s); @output_buffer.concat "\n\n<script type=\"text/javascript\">\nwindow.fluid.dockBadge = "
+
+
+; @output_buffer.concat((h @todos.select { |todo| not todo.done }.size ).to_s); @output_buffer.concat ";\n</script>\n"
+
+; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/yitzhak/code/weshareabrain/app/views/todos/index.html.erb:38:in `compile!'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:348:in `_render_with_layout'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:262:in `render'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:951:in `render_without_benchmark'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:135:in `send'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:135:in `custom'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:179:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:179:in `respond'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:173:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:173:in `respond'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/Users/yitzhak/code/weshareabrain/app/controllers/todos_controller.rb:8:in `index'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `send'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/Users/yitzhak/code/weshareabrain/app/views/todos/index.html.erb:18: syntax error, unexpected ':', expecting ')'
+...'Edit', edit_todo_path(todo) :class => 'edit' ).to_s); @outp...
+                              ^) on line #18 of app/views/todos/index.html.erb:
+15: <span class="points"><%=h todo.points %></span>
+16: <span class="links">
+17: <%= link_to '<img src="/icons/16/information.png" />', todo %>
+18: <%= link_to 'Edit', edit_todo_path(todo) :class => 'edit' %>
+19: <%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %>
+20: </div>
+21: </span>
+
+    app/views/todos/index.html.erb:38:in `compile!'
+    app/controllers/todos_controller.rb:8:in `index'
+
+Rendered rescues/_trace (344.5ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:47:15) [GET]
+  [4;36;1mSQL (3.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (4.4ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 80ms (View: 56, DB: 11) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:47:28) [GET]
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (7.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (2.1ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 76ms (View: 45, DB: 11) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:47:38) [GET]
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (9.9ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (12.4ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 185ms (View: 150, DB: 24) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:47:55) [GET]
+  [4;35;1mSQL (2.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.6ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 62ms (View: 44, DB: 5) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:48:01) [GET]
+  [4;36;1mSQL (2.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (4.9ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 62ms (View: 42, DB: 9) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:48:38) [GET]
+  [4;35;1mSQL (19.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (26.1ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (7.1ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 219ms (View: 151, DB: 53) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#edit (for 127.0.0.1 at 2010-05-24 09:49:03) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (4.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (5.8ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (5.9ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+Rendering template within layouts/todos
+Rendering todos/edit
+  [4;35;1mActsAsTaggableOn::Tag Load (0.5ms)[0m   [0mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE (((taggings.context = 'tags' AND taggings.tagger_id IS NULL) AND ((`taggings`.taggable_id = 1) AND (`taggings`.taggable_type = 'Todo'))) AND ((`taggings`.taggable_id = 1) AND (`taggings`.taggable_type = 'Todo'))) [0m
+Rendered todos/_form (95.4ms)
+Completed in 154ms (View: 113, DB: 16) | 200 OK [http://localhost/todos/1/edit]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:50:10) [GET]
+  [4;36;1mSQL (21.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (37.8ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (8.1ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 113ms (View: 31, DB: 68) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:50:37) [GET]
+  [4;35;1mSQL (2.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (2.2ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 70ms (View: 50, DB: 6) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:51:08) [GET]
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (6.5ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.9ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 316ms (View: 288, DB: 11) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:51:24) [GET]
+  [4;35;1mSQL (3.9ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (31.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (3.3ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 89ms (View: 39, DB: 40) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#destroy (for 127.0.0.1 at 2010-05-24 09:51:55) [DELETE]
+  Parameters: {"authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk=", "id"=>"1"}
+  [4;36;1mSQL (6.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (1.5ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 1) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsTaggableOn::Tagging Load (0.5ms)[0m   [0;1mSELECT * FROM `taggings` WHERE (`taggings`.taggable_id = 1 AND `taggings`.taggable_type = 'Todo') [0m
+  [4;35;1mActsAsTaggableOn::Tagging Load (1.8ms)[0m   [0mSELECT * FROM `taggings` WHERE (`taggings`.taggable_id = 1 AND `taggings`.taggable_type = 'Todo' AND (taggings.tagger_id IS NULL AND taggings.context = 'tags')) [0m
+  [4;36;1mTodo Destroy (0.8ms)[0m   [0;1mDELETE FROM `todos` WHERE `id` = 1[0m
+  [4;35;1mSQL (14.9ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/todos
+Completed in 53ms (DB: 28) | 302 Found [http://localhost/todos/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:51:55) [GET]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (2.0ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 50ms (View: 28, DB: 6) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (2.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#edit (for 127.0.0.1 at 2010-05-24 09:51:58) [GET]
+  Parameters: {"id"=>"4"}
+  [4;35;1mSQL (4.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (4.0ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 4) [0m
+Rendering template within layouts/todos
+Rendering todos/edit
+  [4;36;1mActsAsTaggableOn::Tag Load (2.5ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE (((taggings.context = 'tags' AND taggings.tagger_id IS NULL) AND ((`taggings`.taggable_id = 4) AND (`taggings`.taggable_type = 'Todo'))) AND ((`taggings`.taggable_id = 4) AND (`taggings`.taggable_type = 'Todo'))) [0m
+Rendered todos/_form (61.2ms)
+Completed in 87ms (View: 66, DB: 15) | 200 OK [http://localhost/todos/4/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#update (for 127.0.0.1 at 2010-05-24 09:52:01) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk=", "id"=>"4", "todo"=>{"due(1i)"=>"2010", "due(2i)"=>"5", "due(3i)"=>"24", "due(4i)"=>"07", "text"=>"Add new items easily", "done"=>"1", "points"=>"", "due(5i)"=>"51", "tag_list"=>""}}
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (6.5ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (17.5ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 4) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTodo Update (2.1ms)[0m   [0mUPDATE `todos` SET `updated_at` = '2010-05-24 07:52:01', `due` = '2010-05-24 07:51:00', `done` = 1 WHERE `id` = 4[0m
+  [4;36;1mActsAsTaggableOn::Tag Load (0.7ms)[0m   [0;1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.id = `taggings`.tag_id WHERE (((taggings.context = 'tags' AND taggings.tagger_id IS NULL) AND ((`taggings`.taggable_id = 4) AND (`taggings`.taggable_type = 'Todo'))) AND ((`taggings`.taggable_id = 4) AND (`taggings`.taggable_type = 'Todo'))) [0m
+  [4;35;1mActsAsTaggableOn::Tagging Load (0.5ms)[0m   [0mSELECT * FROM `taggings` WHERE (((`taggings`.`tag_id` IN (NULL) AND `taggings`.`tagger_type` IS NULL AND `taggings`.`context` = 'tags' AND `taggings`.`tagger_id` IS NULL) AND (`taggings`.taggable_id = 4 AND `taggings`.taggable_type = 'Todo')) AND (`taggings`.taggable_id = 4 AND `taggings`.taggable_type = 'Todo')) [0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/todos/4
+Completed in 57ms (DB: 31) | 302 Found [http://localhost/todos/4]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 127.0.0.1 at 2010-05-24 09:52:01) [GET]
+  Parameters: {"id"=>"4"}
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (1.3ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 4) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 27ms (View: 7, DB: 5) | 200 OK [http://localhost/todos/4]
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:52:03) [GET]
+  [4;36;1mSQL (5.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (5.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (2.4ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 62ms (View: 30, DB: 14) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:54:31) [GET]
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (39.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (2.0ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 120ms (View: 63, DB: 43) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:54:53) [GET]
+  [4;36;1mSQL (24.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (6.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (6.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 165ms (View: 88, DB: 37) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:56:04) [GET]
+  [4;35;1mSQL (2.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (50.3ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (6.1ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 192ms (View: 106, DB: 59) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:56:46) [GET]
+  [4;36;1mSQL (5.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (24.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (4.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 150ms (View: 102, DB: 34) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.5ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:56:49) [GET]
+  [4;35;1mSQL (4.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (8.7ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (4.5ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 279ms (View: 77, DB: 21) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:57:16) [GET]
+  [4;36;1mSQL (2.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (4.6ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (5.1ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 134ms (View: 107, DB: 13) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 09:58:28) [GET]
+  [4;35;1mSQL (6.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (2.9ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 103ms (View: 67, DB: 11) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (6.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:00:26) [GET]
+  [4;36;1mSQL (25.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (41.8ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 329ms (View: 252, DB: 75) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:00:37) [GET]
+  [4;35;1mSQL (17.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (6.2ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 151ms (View: 105, DB: 26) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:01:10) [GET]
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (10.6ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 202ms (View: 164, DB: 16) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:01:32) [GET]
+  [4;35;1mSQL (12.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (25.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (5.9ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 176ms (View: 102, DB: 43) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:01:51) [GET]
+  [4;36;1mSQL (6.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (7.5ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 540ms (View: 503, DB: 23) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:02:18) [GET]
+  [4;35;1mSQL (2.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (10.8ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (8.8ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 112ms (View: 63, DB: 22) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:02:38) [GET]
+  [4;36;1mSQL (7.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (25.1ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (5.7ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 206ms (View: 152, DB: 38) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (2.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:02:52) [GET]
+  [4;35;1mSQL (12.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (25.1ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.9ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 653ms (View: 601, DB: 41) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (3.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:03:45) [GET]
+  [4;36;1mSQL (7.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (71.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (10.2ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 208ms (View: 106, DB: 92) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.6ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:04:03) [GET]
+  [4;35;1mSQL (6.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (4.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (12.2ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 120ms (View: 75, DB: 23) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:05:15) [GET]
+  [4;36;1mSQL (6.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (5.8ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (10.1ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 143ms (View: 112, DB: 24) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:05:26) [GET]
+  [4;35;1mSQL (33.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (26.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (41.2ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 190ms (View: 45, DB: 101) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#3 (for 127.0.0.1 at 2010-05-24 10:05:32) [POST]
+  Parameters: {"authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk="}
+
+ActionController::UnknownAction (No action responded to 3. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (10.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (26.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#3 (for 127.0.0.1 at 2010-05-24 10:06:32) [POST]
+  Parameters: {"authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk="}
+
+ActionController::UnknownAction (No action responded to 3. Actions: check, create, destroy, edit, index, new, show, uncheck, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (5.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (7.9ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:06:43) [GET]
+  [4;36;1mSQL (38.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (42.3ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (8.9ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 238ms (View: 135, DB: 104) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (10.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#3 (for 127.0.0.1 at 2010-05-24 10:06:45) [POST]
+  Parameters: {"authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk="}
+
+ActionController::UnknownAction (No action responded to 3. Actions: check, create, destroy, edit, index, new, show, uncheck, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:07:21) [GET]
+  [4;35;1mSQL (11.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (48.7ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (13.9ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 311ms (View: 167, DB: 75) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:07:22) [GET]
+  [4;36;1mSQL (23.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (30.7ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (3.8ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 320ms (View: 144, DB: 58) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.6ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#destroy (for 127.0.0.1 at 2010-05-24 10:07:44) [DELETE]
+  Parameters: {"authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk=", "id"=>"9"}
+  [4;35;1mSQL (12.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (4.4ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (10.1ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 9) [0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsTaggableOn::Tagging Load (9.7ms)[0m   [0mSELECT * FROM `taggings` WHERE (`taggings`.taggable_id = 9 AND `taggings`.taggable_type = 'Todo') [0m
+  [4;36;1mActsAsTaggableOn::Tagging Load (1.8ms)[0m   [0;1mSELECT * FROM `taggings` WHERE (`taggings`.taggable_id = 9 AND `taggings`.taggable_type = 'Todo' AND (taggings.tagger_id IS NULL AND taggings.context = 'tags')) [0m
+  [4;35;1mTodo Destroy (4.4ms)[0m   [0mDELETE FROM `todos` WHERE `id` = 9[0m
+  [4;36;1mSQL (35.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/todos
+Completed in 92ms (DB: 80) | 302 Found [http://localhost/todos/9]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:07:44) [GET]
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (40.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (1.4ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 306ms (View: 188, DB: 43) | 200 OK [http://localhost/todos]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:08:52) [GET]
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (41.6ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 176ms (View: 92, DB: 46) | 200 OK [http://localhost/todos]
+  [4;35;1mSQL (0.6ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (6.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#create (for 127.0.0.1 at 2010-05-24 10:09:09) [POST]
+  Parameters: {"commit"=>"Add", "authenticity_token"=>"N5hKvUS+SLNMM2nF9JakTO2YuMPEMJswiLwS+lgb9zk=", "todo"=>{"text"=>"Make it easier to check off items"}}
+  [4;35;1mSQL (5.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (21.1ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mSQL (28.8ms)[0m   [0mBEGIN[0m
+  [4;36;1mTodo Create (0.6ms)[0m   [0;1mINSERT INTO `todos` (`created_at`, `updated_at`, `done`, `text`, `points`, `due`) VALUES('2010-05-24 08:09:09', '2010-05-24 08:09:09', NULL, 'Make it easier to check off items', NULL, NULL)[0m
+  [4;35;1mSQL (22.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/todos/
+Completed in 101ms (DB: 86) | 302 Found [http://localhost/todos]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:09:09) [GET]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (3.6ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (5.2ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 62ms (View: 32, DB: 10) | 200 OK [http://localhost/todos/]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#show (for 127.0.0.1 at 2010-05-24 10:09:14) [GET]
+  Parameters: {"id"=>"11"}
+  [4;35;1mSQL (7.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (32.2ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (5.2ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 11) [0m
+Rendering template within layouts/todos
+Rendering todos/show
+Completed in 63ms (View: 4, DB: 48) | 200 OK [http://localhost/todos/11]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:10:11) [GET]
+  [4;36;1mSQL (6.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (4.3ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (3.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+
+ActionView::TemplateError (undefined method `uncheck_todo_pach' for #<ActionView::Base:0x1040e3bc0>) on line #14 of app/views/todos/index.html.erb:
+11: <% @todos.each do |todo| %>
+12: <div class="todo <%= todo.done ? 'done' : 'open' %>">
+13: <%= if todo.done
+14: 	link_to '&#x2714;', uncheck_todo_pach(todo), :class => 'tick'
+15: else
+16: 	link_to '&#x2610;', todo, :action => :check, :class => 'tick'
+17: end
+
+    app/views/todos/index.html.erb:14
+    app/views/todos/index.html.erb:11:in `each'
+    app/views/todos/index.html.erb:11
+    app/controllers/todos_controller.rb:8:in `index'
+
+Rendered rescues/_trace (298.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.5ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:10:19) [GET]
+  [4;35;1mSQL (8.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (12.5ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+
+ActionView::TemplateError (undefined method `uncheck_todo_path' for #<ActionView::Base:0x1040976f8>) on line #14 of app/views/todos/index.html.erb:
+11: <% @todos.each do |todo| %>
+12: <div class="todo <%= todo.done ? 'done' : 'open' %>">
+13: <%= if todo.done
+14: 	link_to '&#x2714;', uncheck_todo_path(todo), :class => 'tick'
+15: else
+16: 	link_to '&#x2610;', todo, :action => :check, :class => 'tick'
+17: end
+
+    app/views/todos/index.html.erb:14
+    app/views/todos/index.html.erb:11:in `each'
+    app/views/todos/index.html.erb:11
+    app/controllers/todos_controller.rb:8:in `index'
+
+Rendered rescues/_trace (332.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:10:21) [GET]
+  [4;36;1mSQL (8.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (3.5ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (3.9ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+
+ActionView::TemplateError (undefined method `uncheck_todo_path' for #<ActionView::Base:0x1040e6398>) on line #14 of app/views/todos/index.html.erb:
+11: <% @todos.each do |todo| %>
+12: <div class="todo <%= todo.done ? 'done' : 'open' %>">
+13: <%= if todo.done
+14: 	link_to '&#x2714;', uncheck_todo_path(todo), :class => 'tick'
+15: else
+16: 	link_to '&#x2610;', todo, :action => :check, :class => 'tick'
+17: end
+
+    app/views/todos/index.html.erb:14
+    app/views/todos/index.html.erb:11:in `each'
+    app/views/todos/index.html.erb:11
+    app/controllers/todos_controller.rb:8:in `index'
+
+Rendered rescues/_trace (215.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:21:15) [GET]
+  [4;35;1mSQL (24.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (38.5ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (4.6ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 178ms (View: 83, DB: 69) | 200 OK [http://localhost/todos/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:21:38) [GET]
+  [4;36;1mSQL (3.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (2.1ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 403ms (View: 386, DB: 9) | 200 OK [http://localhost/todos/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 10:21:46) [GET]
+
+ActionController::RoutingError (No route matches "/todo/untick/2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:22:04) [GET]
+  [4;35;1mSQL (2.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (10.1ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 104ms (View: 67, DB: 17) | 200 OK [http://localhost/todos/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 10:22:08) [GET]
+
+ActionController::RoutingError (No route matches "/todo/uncheck/2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-05-24 10:24:05) [GET]
+
+ActionController::RoutingError (No route matches "/todo/uncheck/2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:24:09) [GET]
+  [4;36;1mSQL (8.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (48.6ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.4ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 92ms (View: 26, DB: 57) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#uncheck (for 127.0.0.1 at 2010-05-24 10:24:13) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.6ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 2) [0m
+Redirected to http://localhost:3000/
+Completed in 264ms (DB: 6) | 302 Found [http://localhost/todos/uncheck/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:24:13) [GET]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.8ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 83ms (View: 57, DB: 5) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#uncheck (for 127.0.0.1 at 2010-05-24 10:24:15) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (2.4ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 2) [0m
+Redirected to http://localhost:3000/
+Completed in 32ms (DB: 11) | 302 Found [http://localhost/todos/uncheck/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:24:15) [GET]
+  [4;36;1mSQL (4.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (2.6ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 157ms (View: 109, DB: 9) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:24:34) [GET]
+  [4;35;1mSQL (5.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (4.7ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (10.2ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 66ms (View: 33, DB: 21) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#uncheck (for 127.0.0.1 at 2010-05-24 10:24:37) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (8.8ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 2) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mTodo Update (0.6ms)[0m   [0;1mUPDATE `todos` SET `updated_at` = '2010-05-24 08:24:37', `done` = 0 WHERE `id` = 2[0m
+  [4;35;1mSQL (27.2ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 299ms (DB: 40) | 302 Found [http://localhost/todos/uncheck/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:24:37) [GET]
+  [4;36;1mSQL (2.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (3.7ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 68ms (View: 41, DB: 7) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#check (for 127.0.0.1 at 2010-05-24 10:24:38) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mSQL (6.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (4.9ms)[0m   [0mSELECT * FROM `todos` WHERE (`todos`.`id` = 2) [0m
+  [4;36;1mSQL (5.5ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTodo Update (2.3ms)[0m   [0mUPDATE `todos` SET `updated_at` = '2010-05-24 08:24:38', `done` = 1 WHERE `id` = 2[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 43ms (DB: 22) | 302 Found [http://localhost/todos/check/2]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:24:38) [GET]
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mTodo Columns (5.5ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mTodo Load (0.4ms)[0m   [0mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 88ms (View: 42, DB: 7) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#check (for 127.0.0.1 at 2010-05-24 10:24:42) [GET]
+  Parameters: {"id"=>"11"}
+  [4;36;1mSQL (7.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.6ms)[0m   [0;1mSELECT * FROM `todos` WHERE (`todos`.`id` = 11) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mTodo Update (3.0ms)[0m   [0;1mUPDATE `todos` SET `updated_at` = '2010-05-24 08:24:42', `done` = 1 WHERE `id` = 11[0m
+  [4;35;1mSQL (10.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 44ms (DB: 24) | 302 Found [http://localhost/todos/check/11]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TodosController#index (for 127.0.0.1 at 2010-05-24 10:24:42) [GET]
+  [4;36;1mSQL (6.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTodo Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
+  [4;36;1mTodo Load (0.3ms)[0m   [0;1mSELECT * FROM `todos` [0m
+Rendering template within layouts/todos
+Rendering todos/index
+Completed in 300ms (View: 42, DB: 8) | 200 OK [http://localhost/]

@@ -40,10 +40,24 @@ class TodosController < ApplicationController
 
     if @todo.save
       flash[:notice] = 'Todo was successfully created.'
-      redirect_to('/todos/')
+      redirect_to :action => 'index'
     else
       render :action => "new"
     end
+  end
+  
+  def check
+    @todo = Todo.find(params[:id])
+    @todo.done = true
+    @todo.save
+    redirect_to :action => 'index'
+  end
+
+  def uncheck
+    @todo = Todo.find(params[:id])
+    @todo.done = false
+    @todo.save
+    redirect_to :action => 'index'
   end
 
   # PUT /todos/1
