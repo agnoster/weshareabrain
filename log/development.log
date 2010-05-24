@@ -708,3 +708,22 @@ Migrating to AddPointsToTodos (20100523083021)
   [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `todos`[0m
   [4;36;1mSQL (3.4ms)[0m   [0;1mdescribe `todos`[0m
   [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `todos`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (48.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTodos (20100523071938)
+Migrating to CreateTags (20100523074512)
+Migrating to CreateTaggings (20100523074627)
+Migrating to AddDueToTodos (20100523082737)
+Migrating to AddPointsToTodos (20100523083021)
+Migrating to DropTagsAndTaggings (20100524071430)
+  [4;36;1mSQL (112.7ms)[0m   [0;1mDROP TABLE `tags`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mDROP TABLE `taggings`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100524071430')[0m
+  [4;35;1mSQL (3.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (44.6ms)[0m   [0;1mSHOW FIELDS FROM `todos`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `todos`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW KEYS FROM `todos`[0m
