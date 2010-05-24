@@ -1,5 +1,13 @@
 <h1>Joan and Yitz's shared todos</h1>
 
+<% form_for @todo do |f| %>
+<%= f.error_messages %>
+<p>
+	<%= f.text_field :text %>
+	<%= f.submit "Add" %>
+</p>
+<% end %>
+
 <table>
   <tr>
     <th>Done</th>
